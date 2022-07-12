@@ -1,0 +1,99 @@
+
+*{
+    font-family: 'Satoshi-Bold'
+}
+
+body{
+    background: #111111;
+}
+
+.uil{
+    color:white;
+}
+
+.icons{
+    font-size: 2rem;
+    text-shadow: 2px 2px 5px #000000;
+}
+
+/* Film Cards */
+
+.film{
+    min-width: 200px;
+    z-index:0;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.film__title{
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    bottom: -18px; 
+    padding: 1em;
+    opacity: 0;
+    color: #FFFFFF;
+    background: linear-gradient(transparent, #000000);
+}
+
+.films__arrow{
+    font-size: 32px;
+}
+
+.film:hover > .film__title{
+    -webkit-animation: fade-in-bottom 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-bottom 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.film__img{
+    width: 100%;
+}
+
+/* Carousel */
+
+.films__carousel{
+    width: 100%;
+    position:relative;
+}
+
+.films__arrows{
+    margin-top: 125px;
+    z-index: 1; 
+    width: 100%; 
+    position: fixed; 
+    display:flex; 
+    justify-content: space-between;
+}
+
+.films__list{
+    display:flex;
+    overflow:auto;
+    gap: 16px;
+}
+
+ @-webkit-keyframes fade-in-bottom {
+    0% {
+      -webkit-transform: translateY(50px);
+              transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-bottom {
+    0% {
+      -webkit-transform: translateY(50px);
+              transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

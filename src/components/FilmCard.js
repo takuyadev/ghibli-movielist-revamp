@@ -6,10 +6,11 @@ function FilmDetails({
     }){
     return (
         <div className="film">
-            <img src={img}/>
+            <img className="film__img" src={img} alt={`Cover of ${title}`}/>
             <p className="film__title">
                 {title}
             </p>
+            
         </div>
     )
 }

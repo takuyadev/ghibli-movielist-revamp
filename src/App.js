@@ -1,5 +1,6 @@
 import './App.css';
 import FilmCard from './components/FilmCard'
+import FilmCarousel from './components/FilmCarousel'
 import React, {useState, useEffect} from 'react'
 
 function App() {
@@ -26,25 +27,13 @@ function App() {
   }
 
   const sortFilms = () => {
-    const copy = [...films];
-    setFilms(
-      copy.sort((a,b)=>(
+    setFilms(prevFilms=>{
+      const copy = [...prevFilms];
+      return copy.sort((a,b)=>(
         a.title.localeCompare(b.title)
       ))
-    );
+    });
   };
-
-  //Render map items
-  const filmsHtml = 
-    films.length !== 0 ? 
-        films.map(film=>(
-          <FilmCard
-            key={film.id}
-            title={film.title}
-            img={film.image}
-          />
-        )) :
-        loading
 
   return (
     <div className="app">
@@ -54,7 +43,7 @@ function App() {
       <main>
         <button onClick={()=>filterFilms("Fire")}>Filter</button>
         <button onClick={()=>sortFilms()}>Sort</button>
-        {filmsHtml}
+        <FilmCarousel films={films}/>
       </main>
     </div>
   );
