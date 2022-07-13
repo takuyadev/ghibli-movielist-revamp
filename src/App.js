@@ -5,6 +5,7 @@ import FilmCarousel from './components/FilmCarousel'
 import Searchbar from './components/Searchbar'
 import React, {useState, useEffect} from 'react'
 
+
 function App() {
   const [films, setFilms] = useState([])
   const [allFilms, setAllFilms] = useState([])

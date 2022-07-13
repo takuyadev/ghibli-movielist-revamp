@@ -70,6 +70,11 @@ body{
 
 /* Film Carousel */
 
+.film__carousel{
+    -webkit-animation: fade-in-bottom 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-bottom 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
 .films__carousel{
     width: 100%;
     position:relative;
