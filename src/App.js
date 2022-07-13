@@ -1,11 +1,14 @@
 import './App.css';
 import FilmCard from './components/FilmCard'
+import FilmDetails from './components/FilmDetails'
 import FilmCarousel from './components/FilmCarousel'
+import Searchbar from './components/Searchbar'
 import React, {useState, useEffect} from 'react'
 
 function App() {
   const [films, setFilms] = useState([])
-  const [loading, setLoading] = useState("Loading")
+  const [allFilms, setAllFilms] = useState([])
+  const [currentFilm, setCurrentFilm] = useState([])
 
   // Ghibli movie list API call to store array to state
   useEffect(()=>{
@@ -13,15 +16,17 @@ function App() {
       const response = await fetch("https://ghibliapi.herokuapp.com/films");
       const data = await response.json()
       setFilms(data);
+      setAllFilms(data)
     }
     getFilms().catch(e=>console.log(e))
   },[])
 
   // All user inputs in order to modify array
-  function filterFilms(search){
+  function searchFilms(search){
+    setFilms(allFilms)
     setFilms(prevFilms=>(
       prevFilms.filter(film=>{
-        return film.title.includes(search)
+        return film.title.toLowerCase().includes(search.toLowerCase())
       })
      ))
   }
@@ -38,12 +43,19 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-
+        <FilmDetails film={currentFilm}/>
       </header>
       <main>
-        <button onClick={()=>filterFilms("Fire")}>Filter</button>
-        <button onClick={()=>sortFilms()}>Sort</button>
-        <FilmCarousel films={films}/>
+        <div className="searchbar-container">
+          <Searchbar handleOnChange={searchFilms}/>
+          <div>
+            <button className="btn btn--outline" onClick={()=>sortFilms()}>
+              Sort
+              <i class="uil uil-angle-up"></i>
+            </button>
+          </div>
+        </div>
+        <FilmCarousel handleClick={setCurrentFilm} films={films}/>
       </main>
     </div>
   );

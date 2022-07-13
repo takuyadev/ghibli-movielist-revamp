@@ -1,5 +1,10 @@
 
 *{
+    box-sizing: border-box;
+    font-family: 'Satoshi-Regular'
+}
+
+h1, h2, h3{
     font-family: 'Satoshi-Bold'
 }
 
@@ -14,6 +19,19 @@ body{
 .icons{
     font-size: 2rem;
     text-shadow: 2px 2px 5px #000000;
+}
+
+.btn{
+    cursor:pointer;
+    padding: 0.5em 1em;
+    border-radius: 16px;
+    border:none;
+}
+
+.btn--outline{
+    color: white;
+    border: 1px solid rgba(255,255,255, 0.1);
+    background: transparent;
 }
 
 /* Film Cards */
@@ -34,7 +52,7 @@ body{
     padding: 1em;
     opacity: 0;
     color: #FFFFFF;
-    background: linear-gradient(transparent, #000000);
+    background: linear-gradient(transparent, #111111);
 }
 
 .films__arrow{
@@ -50,7 +68,7 @@ body{
     width: 100%;
 }
 
-/* Carousel */
+/* Film Carousel */
 
 .films__carousel{
     width: 100%;
@@ -71,6 +89,66 @@ body{
     overflow:auto;
     gap: 16px;
 }
+
+
+/* Film Details */
+
+.film-details{
+    color: white;
+    display:flex;
+    gap: 2em;
+    position:relative;
+    background-size: cover;
+}
+
+.film-details > *{
+    z-index: 1;
+}
+
+.film-details > img{
+    position: relative;
+    width: 300px;
+    z-index: 1;
+}
+
+.film__gradient{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    background: linear-gradient(rgba(0,0,0,0.8), #111111);
+}
+
+.film-details__tags > *{
+    display: inline;
+    margin-right: 16px;    
+}
+
+/* Searchbar */
+
+.searchbar-container{
+    margin: 1em 0;
+    display: flex;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+    gap: 16px;
+}
+
+.searchbar{
+    width: 100%; 
+    grid-column: span 10;
+    background: transparent;
+    color: white;
+    padding: 0.5em 1em; 
+    border-radius: 16px;
+    border: 1px solid #FFFFFF10;
+}
+
+.searchbar-container > div{
+    min-width: 75px;
+}
+
 
  @-webkit-keyframes fade-in-bottom {
     0% {

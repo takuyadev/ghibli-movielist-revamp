@@ -1,16 +1,15 @@
 import React from 'react'
 
 function FilmDetails({
-        title,
-        img,
+        film,
+        handleClick
     }){
     return (
-        <div className="film">
-            <img className="film__img" src={img} alt={`Cover of ${title}`}/>
+        <div onClick={()=>handleClick(film)} className="film">
+            <img className="film__img" src={film.image} alt={`Cover of ${film.title}`}/>
             <p className="film__title">
-                {title}
+                {film.title}
             </p>
-            
         </div>
     )
 }
