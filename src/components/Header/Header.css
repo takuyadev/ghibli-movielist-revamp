@@ -1,0 +1,17 @@
+.header__logo{
+    grid-area: logo;
+    display: block;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.header{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+   grid-template-areas: "none logo toggle";
+    padding: 1em;
+}
+
+.header__toggle{
+    grid-area: toggle
+}

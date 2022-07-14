@@ -1,0 +1,24 @@
+.film__carousel{
+    -webkit-animation: fade-in-bottom 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-bottom 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.films__carousel{
+    width: 100%;
+    position:relative;
+}
+
+.films__arrows{
+    margin-top: 125px;
+    z-index: 1; 
+    width: 100%; 
+    position: fixed; 
+    display:flex; 
+    justify-content: space-between;
+}
+
+.films__list{
+    display:flex;
+    overflow:auto;
+    gap: 16px;
+}

@@ -1,0 +1,19 @@
+.searchbar-container{
+    padding: 1em;
+    display: flex;
+    width: 100%;
+    gap: 16px;
+}
+
+.searchbar{
+    width: 100%; 
+    background: transparent;
+    color: white;
+    padding: 0.5em 1em; 
+    border-radius: 16px;
+    border: 1px solid #FFFFFF10;
+}
+
+.searchbar-container > button{
+    min-width: 75px;
+}

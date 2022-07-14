@@ -1,0 +1,17 @@
+.btn{
+    cursor:pointer;
+    padding: 0.5em 1em;
+    border-radius: 16px;
+    border:none;
+}
+
+.btn--outline{
+    color: white;
+    border: 1px solid rgba(255,255,255, 0.1);
+    background: transparent;
+}
+
+.btn--primary{
+    color: white;
+    background: red;
+}

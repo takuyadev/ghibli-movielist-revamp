@@ -1,4 +1,5 @@
 import React from 'react'
+import './Searchbar.css'
 
 function Searchbar({handleOnChange}){
     return(

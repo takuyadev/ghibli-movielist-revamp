@@ -1,0 +1,40 @@
+.film-details{
+    position:relative;
+    display:flex;
+    gap: 2em;
+    height: 500px;
+
+    background-size: cover;
+    color: white;
+}
+
+.film-details::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    
+    background: linear-gradient(rgba(10,10,10,0.9), rgba(10,10,10,1));
+}
+
+.film-details__information{
+    overflow-y: scroll;
+    overflow-x: hidden
+}
+
+.film-details > *{
+    z-index: 1;
+}
+
+.film-details > img{
+    position: relative;
+    width: 400px;
+    z-index: 1;
+
+    object-fit: cover;
+}
+
+.film-details__tags > *{
+    display: inline;
+    margin-right: 16px;    
+}

@@ -36,3 +36,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* General */
+
+* {
+  box-sizing: border-box;
+  font-family: 'Satoshi-Regular'
+}
+
+h1, h2, h3{
+  font-family: 'Satoshi-Bold'
+}
+
+button{
+  cursor: pointer;
+}
