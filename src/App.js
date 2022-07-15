@@ -1,83 +1,93 @@
-import React, {useState, useEffect} from 'react'
+//General Imports
+import React, {useState, useEffect, useContext} from 'react'
+import { ThemeContext } from './modules/context/ThemeContext';
 import './App.css';
+
+//Module Imports
+import getFilms from './modules/api/GetFilms'
+import { updateFavorites } from './modules/utils/Favorite'
+import { filterFilmsBySearch } from './modules/utils/Filter';
+import { sortFilmsByAlphabetical, sortFilmsByFavorite } from './modules/utils/Sort';
+
+//Component Imports
 import Header from './components/Header/Header'
 import FilmDetails from './components/Film/FilmDetails/FilmDetails'
 import FilmCarousel from './components/Film/FilmCarousel/FilmCarousel'
-import SecondaryButton from './components/Button/SecondaryButton/SecondaryButton';
+import Button from './components/Button/Button';
 import Searchbar from './components/Input/Searchbar/Searchbar'
 
 
 function App() {
   const [films, setFilms] = useState([])
-  const [favorite, setFavorite] = useState(localStorage.getItem("id").split(","))
   const [allFilms, setAllFilms] = useState([])
-  const [currentFilm, setCurrentFilm] = useState([])
+  const [favorites, setFavorites] = 
+    useState(localStorage.getItem("id") ? localStorage.getItem("id").split(",") : [])
+  const [currentFilm, setCurrentFilm] = useState()
+  const {theme} = useContext(ThemeContext)
 
   // Ghibli movie list API call to store array to state
+  useEffect(() => {
+    getFilms()
+      .then(data=>{
+        const updatedData = updateFavorites(data, favorites)
+        setFilms(updatedData)
+        setAllFilms(updatedData)  
+    })
+  },[favorites])
+
   useEffect(()=>{
-    async function getFilms(){
-      const response = await fetch("https://ghibliapi.herokuapp.com/films");
-      const data = await response.json()
-      
-      // Set favorite algorithm and set it as the original array
-      const modifiedData = data.map(film=>{
-        return {
-          ...film,
-          favorite: favorite.includes(film.id)
-        }
-      })
-      setFilms(modifiedData);
-      setAllFilms(modifiedData)
-    }
-    getFilms().catch(e=>console.log(e))
-  },[favorite])
+    setFilms(prevFilms => (
+      updateFavorites(prevFilms, favorites)
+    ))
+  },[favorites])
+
+  useEffect(()=>{
+    currentFilm && setCurrentFilm(prevFilm => (
+      films.find(film => (
+        film.id === prevFilm.id
+      ))
+    ))
+  },[films, currentFilm])
   
-  // All user inputs in order to modify array
-  function searchFilms(search){
-    setFilms(allFilms)
-    setFilms(prevFilms=>(
-      prevFilms.filter(film=>{
-        return film.title.toLowerCase().includes(search.toLowerCase())
-      })
-     ))
-  }
-
-  const sortFilms = (type) => {
-    if (type === "alphabet"){
-      setFilms(prevFilms=>{
-        const copy = [...prevFilms];
-        return copy.sort((a,b)=>(
-          a.title.localeCompare(b.title)
-        ))
-      });
-    } else if (type === "favorite"){
-      setFilms(prevFilms=>{
-        const copy = [...prevFilms];
-        return copy.sort((a)=>(
-          !a.favorite 
-        ))
-      });
-    }
-  };
-
   return (
-    <div className="app">
-      <Header/>
-      <FilmDetails 
-        image={currentFilm.image} 
-        title={currentFilm.title} 
-        film={currentFilm} 
-        handleClick={setFavorite}
-      />
-      <section>
-        <div className="searchbar-container">
-          <Searchbar handleOnChange={searchFilms}/>
-          <SecondaryButton text="Sort" icon="angle-up" handleClick={()=>sortFilms("favorite")}/>
-        </div>
-        <FilmCarousel handleClick={setCurrentFilm} films={films}/>
-      </section>
-    </div>
-  );
+      <div className={`app app--${theme}`}>
+        <Header/>
+        <FilmDetails 
+          film={currentFilm} 
+          handleClick={setFavorites}
+        />
+        <section>
+          <div className="searchbar-container">
+            <Searchbar 
+                handleOnChange={(e)=>{
+                  setFilms(allFilms)
+                  setFilms(prevFilms => (
+                    filterFilmsBySearch(prevFilms, e.target.value)
+                  ))
+                }}/>
+            <Button 
+                text="Alphabetical" 
+                icon="letter-english-a" 
+                handleClick={() => {
+                  setFilms(prevFilms => {
+                    return sortFilmsByAlphabetical([...prevFilms])
+                  })
+              }}/>
+            <Button 
+                text="Favorite" 
+                icon="heart" 
+                handleClick={() => {
+                  setFilms(prevFilms => {
+                    return sortFilmsByFavorite([...prevFilms])
+                  })
+              }}/>
+          </div>
+          <FilmCarousel 
+            handleClick={setCurrentFilm} 
+            films={films}/>
+        </section>
+      </div>
+    );
 }
 
 export default App;

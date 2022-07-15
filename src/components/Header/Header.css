@@ -1,3 +1,5 @@
+
+
 .header__logo{
     grid-area: logo;
     display: block;
@@ -14,4 +16,8 @@
 
 .header__toggle{
     grid-area: toggle
+}
+
+.header--light{
+    background:white;
 }

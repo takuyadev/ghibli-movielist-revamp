@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import './FilmCarousel.css'
 import FilmCard from '../FilmCard/FilmCard'
@@ -6,14 +6,6 @@ import FilmCard from '../FilmCard/FilmCard'
 function FilmCarousel({films, handleClick}){
 
     //Render map items
-    const filmsHtml = films.length !== 0 ? 
-      films.map(film=>(
-          <FilmCard
-            key={film.id}
-            film={film}
-            handleClick={handleClick}
-          />
-      )) : "Loading"
 
     return (
         <div 
@@ -23,7 +15,14 @@ function FilmCarousel({films, handleClick}){
               <i className="icons films__arrow films__arrow--right uil uil-angle-right"/>
             </div> 
             <div className="films__list">
-                {filmsHtml}
+                {films.length !== 0 ? 
+      films.map(film=>(
+          <FilmCard
+            key={film.id}
+            film={film}
+            handleClick={handleClick}
+          />
+      )) : "Loading"}
             </div>
         </div>
     )

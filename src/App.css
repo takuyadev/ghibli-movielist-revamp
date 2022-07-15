@@ -1,6 +1,9 @@
+.app--light{
+  background-color: white;
+}
 
-body{
-    background: #111111;
+.app--dark{
+  background-color: #111111;
 }
 
  @-webkit-keyframes fade-in-bottom {
