@@ -14,16 +14,16 @@ function FilmDetails({film, handleClick}){
     
     const styleBackground = {
         backgroundImage: `url(${film.movie_banner})`,
-        backgroundSize: "cover"
+        backgroundSize: "cover",
+        overflow:"hidden"
     }
-
    
     return(
         <AnimatePresence>
             <motion.section 
                 key={film.id}
                 animate={{ position: "static", opacity: 1}}
-                exit={{ position: "absolute", x: "100%", zIndex: 2}}
+                exit={{ position: "absolute", x: "100vw", zIndex: 2}}
                 transition={{ ease:[0.75, 0.010, 0.100, 1.000], duration: 1}} 
                 style={styleBackground}>
                     <div className="film-details">

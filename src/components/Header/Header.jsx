@@ -9,7 +9,7 @@ function Header(){
         <header className={`header header--${theme}`}>
             <img 
                 className="header__logo" 
-                src="./img/logo.png"
+                src={`./img/logo_${theme}.png`}
                 alt="Ghibli Studio Logo"
             />
             <button 

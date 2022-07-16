@@ -20,6 +20,7 @@ import Searchbar from './components/Input/Searchbar/Searchbar'
 function App() {
   const [films, setFilms] = useState([])
   const [allFilms, setAllFilms] = useState([])
+  const [loaded, setLoaded] = useState(false)
   const [favorites, setFavorites] = 
     useState(localStorage.getItem("id") ? localStorage.getItem("id").split(",") : [])
   const [currentFilm, setCurrentFilm] = useState()
@@ -30,10 +31,11 @@ function App() {
     getFilms()
       .then(data=>{
         const updatedData = updateFavorites(data, favorites)
+        setLoaded(true) 
         setFilms(updatedData)
-        setAllFilms(updatedData)  
+        setAllFilms(updatedData) 
     })
-  },[favorites])
+  },[])
 
   useEffect(()=>{
     setFilms(prevFilms => (
@@ -50,44 +52,48 @@ function App() {
   },[films, currentFilm])
   
   return (
-      <div className={`app app--${theme}`}>
-        <Header/>
-        <FilmDetails 
-          film={currentFilm} 
-          handleClick={setFavorites}
-        />
-        <section>
-          <div className="searchbar-container">
-            <Searchbar 
-                handleOnChange={(e)=>{
-                  setFilms(allFilms)
-                  setFilms(prevFilms => (
-                    filterFilmsBySearch(prevFilms, e.target.value)
-                  ))
-                }}/>
-            <Button 
-                text="Alphabetical" 
-                icon="letter-english-a" 
-                handleClick={() => {
-                  setFilms(prevFilms => {
-                    return sortFilmsByAlphabetical([...prevFilms])
-                  })
-              }}/>
-            <Button 
-                text="Favorite" 
-                icon="heart" 
-                handleClick={() => {
-                  setFilms(prevFilms => {
-                    return sortFilmsByFavorite([...prevFilms])
-                  })
-              }}/>
+      <>
+         {!loaded ? <h1>Loading</h1> : 
+          <div className={`app app--${theme}`}>
+              <Header/>
+              <FilmDetails 
+                  film={currentFilm} 
+                  handleClick={setFavorites}
+              />
+              <section>
+                <div className="searchbar-container">
+                <Searchbar 
+                      handleOnChange={(e)=>{
+                        setFilms(allFilms)
+                        setFilms(prevFilms => (
+                        filterFilmsBySearch(prevFilms, e.target.value)
+                      ))
+                    }}/>
+                <Button 
+                    text="Alphabetical" 
+                    icon="letter-english-a" 
+                    handleClick={() => {
+                      setFilms(prevFilms => {
+                        return sortFilmsByAlphabetical([...prevFilms])
+                      })
+                  }}/>
+                <Button 
+                    text="Favorite" 
+                    icon="heart" 
+                    handleClick={() => {
+                      setFilms(prevFilms => {
+                        return sortFilmsByFavorite([...prevFilms])
+                      })
+                  }}/>
+              </div>
+              <FilmCarousel 
+                handleClick={setCurrentFilm} 
+                films={films}/>
+            </section>
           </div>
-          <FilmCarousel 
-            handleClick={setCurrentFilm} 
-            films={films}/>
-        </section>
-      </div>
-    );
+        }
+      </>
+  );
 }
 
 export default App;

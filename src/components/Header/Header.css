@@ -1,4 +1,4 @@
-
+/* Base Stylings */
 
 .header__logo{
     grid-area: logo;
@@ -10,7 +10,7 @@
 .header{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
-   grid-template-areas: "none logo toggle";
+    grid-template-areas: "none logo toggle";
     padding: 1em;
 }
 
@@ -18,6 +18,10 @@
     grid-area: toggle
 }
 
+/* Light Mode */
+
 .header--light{
     background:white;
 }
+
+/* Dark Mode */
