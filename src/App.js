@@ -13,9 +13,8 @@ import { sortFilmsByAlphabetical, sortFilmsByFavorite } from './modules/utils/So
 import Header from './components/Header/Header'
 import FilmDetails from './components/Film/FilmDetails/FilmDetails'
 import FilmCarousel from './components/Film/FilmCarousel/FilmCarousel'
-import Button from './components/Button/Button';
 import Searchbar from './components/Input/Searchbar/Searchbar'
-
+import Dropdown from './components/Input/Dropdown/Dropdown';
 
 function App() {
   const [films, setFilms] = useState([])
@@ -25,6 +24,25 @@ function App() {
     useState(localStorage.getItem("id") ? localStorage.getItem("id").split(",") : [])
   const [currentFilm, setCurrentFilm] = useState()
   const {theme} = useContext(ThemeContext)
+
+  const DROPDOWN_OPTIONS = [
+    {
+        text: "Alphabet",
+        click: () => {
+          setFilms(prevFilms => {
+            return sortFilmsByAlphabetical([...prevFilms])
+          })
+      }
+    },
+    {
+        text: "Favorite",
+        click: () => {
+          setFilms(prevFilms => {
+            return sortFilmsByFavorite([...prevFilms])
+          })
+      }
+    }
+]
 
   // Ghibli movie list API call to store array to state
   useEffect(() => {
@@ -62,30 +80,17 @@ function App() {
               />
               <section>
                 <div className="searchbar-container">
-                <Searchbar 
-                      handleOnChange={(e)=>{
-                        setFilms(allFilms)
-                        setFilms(prevFilms => (
-                        filterFilmsBySearch(prevFilms, e.target.value)
-                      ))
-                    }}/>
-                <Button 
-                    text="Alphabetical" 
-                    icon="letter-english-a" 
-                    handleClick={() => {
-                      setFilms(prevFilms => {
-                        return sortFilmsByAlphabetical([...prevFilms])
-                      })
-                  }}/>
-                <Button 
-                    text="Favorite" 
-                    icon="heart" 
-                    handleClick={() => {
-                      setFilms(prevFilms => {
-                        return sortFilmsByFavorite([...prevFilms])
-                      })
-                  }}/>
-              </div>
+                  <Searchbar 
+                        handleOnChange={(e)=>{
+                          setFilms(allFilms)
+                          setFilms(prevFilms => (
+                          filterFilmsBySearch(prevFilms, e.target.value)
+                        ))
+                      }}/>
+                  <Dropdown 
+                    text={"Sort"}
+                    options={DROPDOWN_OPTIONS}/>
+                </div>
               <FilmCarousel 
                 handleClick={setCurrentFilm} 
                 films={films}/>

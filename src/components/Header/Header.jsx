@@ -1,9 +1,12 @@
-import React, {useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import { ThemeContext } from '../../modules/context/ThemeContext'
 import './Header.css'
 
+import Toggle from '../Input/Toggle/Toggle'
+
 function Header(){
-    const {theme, changeTheme} = useContext(ThemeContext)
+    const {theme, changeTheme, getThemeState} = useContext(ThemeContext)
+    const [on, setOn] = useState(getThemeState)
 
     return (
         <header className={`header header--${theme}`}>
@@ -12,10 +15,11 @@ function Header(){
                 src={`./img/logo_${theme}.png`}
                 alt="Ghibli Studio Logo"
             />
-            <button 
-                className={`header__toggle header__toggle--${theme}`}
-                onClick={changeTheme}
-            />
+            <Toggle state={on} 
+                setState={()=>{
+                    setOn(!on)
+                    changeTheme()
+                }}/>
         </header>
     )
 }

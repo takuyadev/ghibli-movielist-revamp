@@ -1,17 +1,21 @@
 /* Base Stylings */
-
-.header__logo{
-    grid-area: logo;
-    display: block;
-    margin: 0 auto;
-    height: 50px;
-}
-
 .header{
+    position: sticky;
+    top: 0;
+    background: black;
+    width: 100%;
+    z-index: 2;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "none logo toggle";
     padding: 1em;
+}
+
+.header__logo{
+    grid-area: logo;
+    display: block;
+    height: 50px;
+    justify-self: center;
 }
 
 .header__toggle{
@@ -25,3 +29,13 @@
 }
 
 /* Dark Mode */
+
+
+@media (max-width: 800px){
+    .header{
+        grid-template-areas: "logo none toggle";
+    }
+    .header__logo{
+        justify-self: start;
+    }
+}

@@ -9,8 +9,12 @@ function ThemeContextProvider(props){
         setTheme(prevTheme => prevTheme === "dark" ? "light" : "dark")
     }
 
+    function getThemeState(){
+        return theme === "dark" ? false : true
+    }
+
     return (
-        <ThemeContext.Provider value={{theme, changeTheme, setTheme}}>
+        <ThemeContext.Provider value={{theme, changeTheme, getThemeState, setTheme}}>
             {props.children}
         </ThemeContext.Provider>
     )

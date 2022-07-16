@@ -1,0 +1,27 @@
+.toggle,
+.toggle__slider{
+    border-radius: 16px;
+}
+
+.toggle{
+    grid-area: toggle;
+    position: relative;
+    align-self: center;
+    justify-self: end;
+    width: 50px;
+    height: 15px;
+    background: white;
+    border: 1px solid rgba(0,0,0, 0.5);
+    border-radius: 16px;
+    cursor:pointer;
+}
+
+.toggle__slider{
+    border: 1px solid rgba(255,255,255,0.3);
+    position: absolute;
+    width: 50%;
+    height: 25px;
+    top: -7px;
+    background: black;
+}
+

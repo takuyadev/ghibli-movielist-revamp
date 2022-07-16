@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { ThemeContext } from '../../../modules/context/ThemeContext'
 import './FilmDetails.css'
 import Button from '../../Button/Button'
 import { saveFavorite } from '../../../modules/utils/Favorite'
 import {motion, AnimatePresence} from 'framer-motion'
 
 function FilmDetails({film, handleClick}){
+    const {theme} = useContext(ThemeContext)
 
     const {
             id, title, original_title, image, director, 
@@ -14,8 +16,7 @@ function FilmDetails({film, handleClick}){
     
     const styleBackground = {
         backgroundImage: `url(${film.movie_banner})`,
-        backgroundSize: "cover",
-        overflow:"hidden"
+        backgroundSize: "cover"
     }
    
     return(
@@ -26,10 +27,10 @@ function FilmDetails({film, handleClick}){
                 exit={{ position: "absolute", x: "100vw", zIndex: 2}}
                 transition={{ ease:[0.75, 0.010, 0.100, 1.000], duration: 1}} 
                 style={styleBackground}>
-                    <div className="film-details">
+                    <div className={`film-details film-details--${theme}`}>
                         <img 
-                            src={image} 
-                            alt={`Movie Banner of ${title}`}
+                            src={image ? image : `./img/placeholder_${theme}.png`} 
+                            alt={`Movie Cover of ${title}`}
                         />
                         
                         {/* If film any film exists on currentFilm*/}
@@ -72,7 +73,6 @@ function FilmDetails({film, handleClick}){
 
 FilmDetails.defaultProps = {
     film: {
-        image: "./img/placeholder.png",
         title: "Placeholder"
     }
 }
