@@ -4,7 +4,7 @@
     top: 0;
     background: black;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "none logo toggle";

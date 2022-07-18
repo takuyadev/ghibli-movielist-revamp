@@ -4,9 +4,10 @@ import './FilmCard.css'
 
 function FilmCard({
         film,
-        handleClick
+        handleClick,
+        disabled,
+        setState
     }){
-    
  
     const iconAnimation = {
         initial: { opacity: 0 },
@@ -16,7 +17,13 @@ function FilmCard({
     
     return (
         <div 
-            onClick={()=>handleClick(film)} 
+            disabled={disabled}
+            onClick={()=>{ 
+                setState(true)
+                !disabled && handleClick(film)
+                }
+            } 
+            
             className="film"
         >
             <AnimatePresence>

@@ -2,17 +2,27 @@
     cursor:pointer;
     padding: 0.5em 1em;
     border-radius: 16px;
-    border:none;
-    width: 200px;
+    transition: background 0.1s;
+    padding: 0.5 1em;
 }
 
-.btn--outline{
-    color: white;
-    border: 1px solid rgba(255,255,255, 0.1);
-    background: transparent;
-}
-
-.btn--primary{
+.btn--primary-dark,
+.btn--primary-light{
     color: white;
     background: red;
+    border: 1px solid red;
+}
+
+/* Dark Mode */
+
+.btn--outline-light{
+    background: transparent;
+    color: black;
+    border: 1px solid black;
+}
+
+.btn--outline-dark{
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255, 0.1);
 }

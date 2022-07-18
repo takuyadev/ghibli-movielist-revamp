@@ -3,7 +3,7 @@ import React, {useState, createContext} from 'react'
 const ThemeContext = createContext()
 
 function ThemeContextProvider(props){
-    const [theme, setTheme] = useState("dark")
+    const [theme, setTheme] = useState(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
 
     function changeTheme(){
         setTheme(prevTheme => prevTheme === "dark" ? "light" : "dark")

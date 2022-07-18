@@ -6,16 +6,30 @@
 
 .dropdown__menu{
     position:absolute;
-    width: 100%;
+    right: 0;
+    min-width: 200px;
+    width: calc(100% - 2em);
     padding: 1em;
+    gap: 1em;
     display:flex;
     flex-direction: column;
-    gap: 1em;
-    z-index: 2;
+    z-index: 1;
 
     border-radius: 16px;
     list-style: none;
     background-color: #111111;
     color:white;
     border: 1px solid rgba(255,255,255,0.3);
+}
+
+.dropdown__list{
+    border-radius: 8px;
+    cursor:pointer;
+    padding: 0.5em 1em;
+    width: 100%;
+    transition: 0.1s ease-in-out;
+}
+
+.dropdown__list:hover{
+    background: #222222;
 }

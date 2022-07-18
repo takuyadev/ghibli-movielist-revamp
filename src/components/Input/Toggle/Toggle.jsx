@@ -2,15 +2,11 @@ import React from 'react'
 import "./Toggle.css"
 
 function Toggle({state, setState}){
-    
-    const slidePosition = {
-        right: !state && "-10px",
-        left: state && "-10px"
-    }
-
     return(
         <div onClick={setState} className="toggle">
-            <div className="toggle__slider" style={slidePosition}></div>
+            <div className={`toggle__slider toggle__slider--${state ? "on" : "off"}`}>
+            <i className={`uil uil-${state ? "sun" : "moon"}`}></i>
+            </div>
         </div>
     )
 }

@@ -1,9 +1,8 @@
 .film-details{
     position:relative;
+    height: 500px;
     display:flex;
     gap: 2em;
-    height: 500px;
-
     background-size: cover;
     color: white;
 }
@@ -15,16 +14,15 @@
     width: 100%;
 }
 
-.film-details--light{
-    color: black;
+.film-details__heading{
+    font-size: 2rem;
+    margin-bottom: 0;
 }
 
-.film-details--dark::after{
-    background: linear-gradient(rgba(10,10,10,0.9), rgba(10,10,10,1));
-}
-
-.film-details--light::after{
-    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.9));
+.film-details__heading--japanese{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 .film-details__information{
@@ -40,15 +38,45 @@
     position: relative;
     width: 400px;
     z-index: 1;
-
     object-fit: cover;
 }
 
-.film-details__tags > *{
-    display: inline;
-    margin-right: 16px;    
+.film-details__tags *{
+    margin: 0;
 }
 
+.film-details__tags,
+.film-details__tag{
+    display:flex;
+    align-items:center;
+    opacity: 0.8;
+}
+
+.film-details__tags{
+    gap: 1em;
+}
+
+.film-details__tag{
+    gap: 0.25em;
+}
+
+
+/* Light Mode */
+.film-details--light{
+    color: black;
+}
+
+.film-details--light::after{
+    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9));
+}
+
+/* Dark Mode */
+.film-details--dark::after{
+    background: linear-gradient(rgba(10,10,10,0.9), rgba(10,10,10,1));
+}
+
+
+/* Media Queries */
 @media (max-width: 800px){
     .film-details{
         flex-direction: column;

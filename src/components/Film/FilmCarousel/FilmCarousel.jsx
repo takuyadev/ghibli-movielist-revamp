@@ -1,10 +1,17 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {motion} from 'framer-motion'
 
 import './FilmCarousel.css'
 import FilmCard from '../FilmCard/FilmCard'
 
 function FilmCarousel({films, handleClick}){
+  const [disabled, setDisabled] = useState(false)
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setDisabled(false)
+    }, 1500)
+  },[disabled])
 
   const container = {
     hidden: { opacity: 0 },
@@ -25,11 +32,12 @@ function FilmCarousel({films, handleClick}){
         <motion.div variants={item}>
             <FilmCard
               film={film}
+              disabled={disabled}
+              setState={setDisabled}
               handleClick={handleClick}
             />
         </motion.div>
   ))
-
   return (
       <div 
         className="films__carousel">

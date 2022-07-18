@@ -41,7 +41,8 @@ code {
 
 * {
   box-sizing: border-box;
-  font-family: 'Satoshi-Regular'
+  font-family: 'Satoshi-Regular';
+  transition: background 0.3s ease-in-out;
 }
 
 h1, h2, h3{

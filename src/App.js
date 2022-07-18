@@ -7,7 +7,7 @@ import './App.css';
 import getFilms from './modules/api/GetFilms'
 import { updateFavorites } from './modules/utils/Favorite'
 import { filterFilmsBySearch } from './modules/utils/Filter';
-import { sortFilmsByAlphabetical, sortFilmsByFavorite } from './modules/utils/Sort';
+import { sortFilmsByFavorite, sortByReleaseDate, sortByTitle } from './modules/utils/Sort';
 
 //Component Imports
 import Header from './components/Header/Header'
@@ -27,10 +27,10 @@ function App() {
 
   const DROPDOWN_OPTIONS = [
     {
-        text: "Alphabet",
+        text: "Title",
         click: () => {
           setFilms(prevFilms => {
-            return sortFilmsByAlphabetical([...prevFilms])
+            return sortByTitle([...prevFilms])
           })
       }
     },
@@ -41,7 +41,15 @@ function App() {
             return sortFilmsByFavorite([...prevFilms])
           })
       }
-    }
+    },
+    {
+        text: "Release Date",
+        click: () => {
+          setFilms(prevFilms => {
+            return sortByReleaseDate([...prevFilms])
+          })
+      }
+    },
 ]
 
   // Ghibli movie list API call to store array to state
@@ -54,7 +62,7 @@ function App() {
         setAllFilms(updatedData) 
     })
   },[])
-
+  
   useEffect(()=>{
     setFilms(prevFilms => (
       updateFavorites(prevFilms, favorites)

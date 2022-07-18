@@ -36,25 +36,25 @@ function FilmDetails({film, handleClick}){
                         {/* If film any film exists on currentFilm*/}
                         {id && 
                             <div className="film-details__information">
-                                <h1>{title}</h1>
-                                <h1>{original_title}</h1>
-                                <div className="film-details__tags">
-                                    <p>{director}</p>
-                                    <p>{producer}</p>
+                                <h1 className="film-details__heading film-details__heading--english">{title}</h1>
+                                <p className="film-details__heading film-details__heading--japanese">{original_title}</p>
+                                <div className="film-details__tags film-details__tags--director">
+                                    <p className="film-details__tag">{director}</p>
+                                    <p className="film-details__tag">{producer}</p>
                                 </div>
                                 <div className="film-details__tags film-details__tags--stats">
-                                    <p>
-                                        {rt_score}
+                                    <div className="film-details__tag">
+                                        <p>{rt_score}</p>
                                         <i className="uil uil-star"/>
-                                    </p>
-                                    <p>
-                                        {release_date}
+                                    </div>
+                                    <div className="film-details__tag">
+                                        <p>{release_date}</p>
                                         <i className="uil uil-calendar-alt"/>
-                                    </p>
-                                    <p>
-                                        {running_time}
+                                    </div>
+                                    <div className="film-details__tag">
+                                        <p>{running_time}</p>
                                         <i className="uil uil-clock"/>
-                                    </p>
+                                    </div>
                                 </div>
                                 <p className="body">{description}</p>
                                 <Button 
