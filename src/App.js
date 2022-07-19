@@ -1,6 +1,7 @@
 //General Imports
 import React, {useState, useEffect, useContext} from 'react'
 import { ThemeContext } from './modules/context/ThemeContext';
+import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 
 //Module Imports
@@ -15,16 +16,22 @@ import FilmDetails from './components/Film/FilmDetails/FilmDetails'
 import FilmCarousel from './components/Film/FilmCarousel/FilmCarousel'
 import Searchbar from './components/Input/Searchbar/Searchbar'
 import Dropdown from './components/Input/Dropdown/Dropdown';
+import Loading from './components/Loading/Loading'
 
 function App() {
   const [films, setFilms] = useState([])
   const [allFilms, setAllFilms] = useState([])
   const [loaded, setLoaded] = useState(false)
-  const [favorites, setFavorites] = 
-    useState(localStorage.getItem("id") ? localStorage.getItem("id").split(",") : [])
   const [currentFilm, setCurrentFilm] = useState()
+  const [currentSort, setCurrentSort] = useState("Title")
   const {theme} = useContext(ThemeContext)
+  
+  const [favorites, setFavorites] = useState( 
+      localStorage.getItem("id") ? 
+      localStorage.getItem("id").split(",") : 
+      [] )
 
+    
   const DROPDOWN_OPTIONS = [
     {
         text: "Title",
@@ -70,16 +77,19 @@ function App() {
   },[favorites])
 
   useEffect(()=>{
-    currentFilm && setCurrentFilm(prevFilm => (
-      films.find(film => (
-        film.id === prevFilm.id
-      ))
-    ))
+    currentFilm && setCurrentFilm(prevFilm => {
+      if(films.length !== 0) {
+        return films.find(film => (
+            film.id === prevFilm.id
+        ))
+      }
+      return prevFilm
+    })
   },[films, currentFilm])
   
   return (
-      <>
-         {!loaded ? <h1>Loading</h1> : 
+      <AnimatePresence>
+         {!loaded ? <Loading/> : 
           <div className={`app app--${theme}`}>
               <Header/>
               <FilmDetails 
@@ -96,7 +106,8 @@ function App() {
                         ))
                       }}/>
                   <Dropdown 
-                    text={"Sort"}
+                    text={currentSort}
+                    setCurrentSort={setCurrentSort}
                     options={DROPDOWN_OPTIONS}/>
                 </div>
               <FilmCarousel 
@@ -105,7 +116,7 @@ function App() {
             </section>
           </div>
         }
-      </>
+      </AnimatePresence>
   );
 }
 

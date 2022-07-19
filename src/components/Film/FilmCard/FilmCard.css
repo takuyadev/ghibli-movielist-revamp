@@ -10,10 +10,11 @@
 
 .film__heart{
     position: absolute;
-    right: 0;
+    right: 5px;
     top: 0;
     color: red;
 }
+
 .film__title{
     z-index: 1;
     width:100%;

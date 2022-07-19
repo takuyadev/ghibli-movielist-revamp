@@ -1,15 +1,22 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { ThemeContext } from '../../../modules/context/ThemeContext'
 import './Dropdown.css'
 
 import { motion, AnimatePresence} from 'framer-motion'
 import Button from '../../Button/Button'
-function Dropdown({text, options}){
+
+function Dropdown({text, options, setCurrentSort}){
     const [show, setShow] = useState(false)
+    const { theme } = useContext(ThemeContext)
+ 
     const menuHtml = options.map((option,i)=>(
         <li 
             key={i}
-            onClick={() => option.click()}
-            className="dropdown__list"
+            onClick={() => {
+                option.click()
+                setCurrentSort(option.text)
+            }}
+            className={`dropdown__list dropdown__list--${theme}`}
         >
                 {option.text}
         </li>
@@ -35,7 +42,7 @@ function Dropdown({text, options}){
         <div className="dropdown">
             <Button 
                 text={text}
-                width={"100px"}
+                width={"150px"}
                 handleClick={()=>setShow(!show)}/>
             <AnimatePresence>
                 {show && 
@@ -44,7 +51,7 @@ function Dropdown({text, options}){
                     initial="hidden"
                     animate="visible"
                     exit="hidden"
-                    className='dropdown__menu'>
+                    className={`dropdown__menu dropdown__menu--${theme}`}>
                         {menuHtml}
                 </motion.ul>}
             </AnimatePresence>

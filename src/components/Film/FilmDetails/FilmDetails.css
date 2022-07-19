@@ -1,6 +1,11 @@
+.film-details-container{
+    position:relative;
+    overflow: hidden;
+    height: 500px;
+}
+
 .film-details{
     position:relative;
-    height: 500px;
     display:flex;
     gap: 2em;
     background-size: cover;
@@ -26,8 +31,11 @@
 }
 
 .film-details__information{
-    overflow-y: scroll;
     max-width: 700px;
+}
+
+.film-details__description{
+    overflow-y: scroll;
 }
 
 .film-details > *{
@@ -67,12 +75,12 @@
 }
 
 .film-details--light::after{
-    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9));
+    background: rgba(255, 255, 255, 0.8);
 }
 
 /* Dark Mode */
 .film-details--dark::after{
-    background: linear-gradient(rgba(10,10,10,0.9), rgba(10,10,10,1));
+    background: rgba(0, 0, 0, 0.85);
 }
 
 
@@ -90,5 +98,10 @@
         height: 150px;
         width: 100%;
     }
-    
+    .film-details{
+        gap: 0;
+    }
+    .film-details__heading{
+        margin-top: 0;
+    }
 }
