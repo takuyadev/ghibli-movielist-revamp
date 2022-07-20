@@ -60,7 +60,7 @@ function FilmCarousel({films, handleClick}){
                 />
                 <UilAngleRight
                   onClick={()=>scroll(500)} 
-                  className={`films__arrow--${theme} films__arrow--right uil`}
+                  className={`films__arrow films__arrow--${theme} films__arrow--right uil`}
                 />
                 <motion.div 
                   className="films__list"
