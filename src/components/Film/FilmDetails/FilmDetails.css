@@ -1,7 +1,15 @@
+/* Base Stylings */
+
 .film-details-container{
     position:relative;
     overflow: hidden;
     height: 500px;
+}
+
+.film-details__placeholder{
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .film-details{
@@ -32,6 +40,7 @@
 
 .film-details__information{
     max-width: 700px;
+    height: inherit;
 }
 
 .film-details__description{
@@ -70,6 +79,7 @@
 
 
 /* Light Mode */
+
 .film-details--light{
     color: black;
 }
@@ -79,29 +89,37 @@
 }
 
 /* Dark Mode */
+
 .film-details--dark::after{
     background: rgba(0, 0, 0, 0.85);
 }
 
 
 /* Media Queries */
+
 @media (max-width: 800px){
+
     .film-details{
         flex-direction: column;
-        
     }
+
     .film-details__information{
         padding: 1em;
-        height: 500px;
+        height: 350px;
+        overflow-y: scroll;
     }
+
     .film-details > img{
         height: 150px;
         width: 100%;
     }
+
     .film-details{
         gap: 0;
     }
+
     .film-details__heading{
         margin-top: 0;
     }
+
 }

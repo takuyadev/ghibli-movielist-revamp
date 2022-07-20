@@ -62,8 +62,8 @@ function FilmDetails({film, handleClick}){
                                                 type={favorite ? "primary" : "outline"}
                                             /> 
                                         </> :  
-                                        <div> 
-                                            See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.See movie list below to view movie details.
+                                        <div className="film-details__placeholder"> 
+                                            <i class="icons uil uil-arrow-down"></i> Select movie below to expand details.
                                         </div> }
                                     </div>
                                 </div>

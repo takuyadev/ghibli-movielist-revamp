@@ -50,7 +50,7 @@ function FilmCarousel({films, handleClick}){
 
   return (
       <div 
-        className="films__carousel">
+        className="films-carousel">
             {films.length !== 0 ? 
               <>
                 <i 

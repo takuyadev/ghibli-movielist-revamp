@@ -5,7 +5,7 @@ function Toggle({state, setState}){
     return(
         <div onClick={setState} className="toggle">
             <div className={`toggle__slider toggle__slider--${state ? "on" : "off"}`}>
-            <i className={`uil uil-${state ? "sun" : "moon"}`}></i>
+            <i className={`icons uil uil-${state ? "sun" : "moon"}`}></i>
             </div>
         </div>
     )

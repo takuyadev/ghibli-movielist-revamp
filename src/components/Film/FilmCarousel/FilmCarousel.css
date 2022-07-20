@@ -1,9 +1,8 @@
-.film__carousel{
+.film-carousel{
     -webkit-animation: fade-in-bottom 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	        animation: fade-in-bottom 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
-
-.films__carousel{
+.films-carousel{
     width: 100%;
     min-height: 300px;
     position:relative;
@@ -37,7 +36,7 @@
     right: 0;
 }
 
-.film-details__placeholder{
+.film-carousel__placeholder{
     min-height: 300px;
     gap: 0.5em;
     display:flex;

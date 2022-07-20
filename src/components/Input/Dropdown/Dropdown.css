@@ -7,23 +7,22 @@
 .dropdown__menu{
     position:absolute;
     right: 0;
+    display:flex;
+    flex-direction: column;
+    gap: 1em;
     min-width: 200px;
     width: calc(100% - 2em);
     padding: 1em;
-    gap: 1em;
-    display:flex;
-    flex-direction: column;
     z-index: 5;
-
     border-radius: 16px;
     list-style: none;
 }
 
 .dropdown__list{
-    border-radius: 8px;
-    cursor:pointer;
-    padding: 0.5em 1em;
     width: 100%;
+    padding: 0.5em 1em;
+    cursor:pointer;
+    border-radius: 8px;
     transition: 0.1s ease-in-out;
 }
 
@@ -38,7 +37,6 @@
 .dropdown__list--dark:hover{
     background: #222222;
 }
-
 
 /* Light Mode */
 
