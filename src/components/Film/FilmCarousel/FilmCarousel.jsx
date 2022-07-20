@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ThemeContext } from '../../../modules/context/ThemeContext'
+import { UilFilm, UilAngleLeft, UilAngleRight } from '@iconscout/react-unicons'
 
 import './FilmCarousel.css'
 import FilmCard from '../FilmCard/FilmCard'
@@ -33,7 +34,7 @@ function FilmCarousel({films, handleClick}){
   }
 
   const filmsHtml = films.map(film=>(
-        <motion.div variants={item}>
+        <motion.div key={film.id} variants={item}>
             <FilmCard
               film={film}
               disabled={disabled}
@@ -53,13 +54,13 @@ function FilmCarousel({films, handleClick}){
         className="films-carousel">
             {films.length !== 0 ? 
               <>
-                <i 
+                <UilAngleLeft
                   onClick={()=>scroll(-500)}
-                  className={`icons films__arrow films__arrow--${theme} films__arrow--left uil uil-angle-left`}
+                  className={`films__arrow films__arrow--${theme} films__arrow--left`}
                 />
-                <i
+                <UilAngleRight
                   onClick={()=>scroll(500)} 
-                  className={`icons films__arrow films__arrow--${theme} films__arrow--right uil uil-angle-right`}
+                  className={`films__arrow--${theme} films__arrow--right uil`}
                 />
                 <motion.div 
                   className="films__list"
@@ -72,7 +73,7 @@ function FilmCarousel({films, handleClick}){
                 </motion.div> 
               </> :
               <div className="film-details__placeholder">
-                <i class="uil uil-film"></i> No results 
+                <UilFilm /> No results 
               </div> }
 
       </div>

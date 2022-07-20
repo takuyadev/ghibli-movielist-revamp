@@ -1,9 +1,3 @@
-function sortFilmsByAlphabetical(films){
-    return films.sort((a, b) => (
-        a.title.localeCompare(b.title)
-    ))
-}
-
 function sortFilmsByFavorite(films){
     return films.sort(a => (
         !a.favorite
@@ -25,11 +19,6 @@ function sortByTitle(films){
     );
 };
 
-function checkSort(type, films){
-    if(type === "Title") sortByTitle(films)
-    if(type === "Release Date") sortByReleaseDate(films)
-    if(type === "Favorite") sortFilmsByFavorite(films)
 
-}
 
-export {sortFilmsByAlphabetical, sortFilmsByFavorite, sortByReleaseDate, sortByTitle}
+export {sortFilmsByFavorite, sortByReleaseDate, sortByTitle}

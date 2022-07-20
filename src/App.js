@@ -1,7 +1,6 @@
 //General Imports
 import React, {useState, useEffect, useContext} from 'react'
 import { ThemeContext } from './modules/context/ThemeContext';
-import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 
 //Module Imports
@@ -64,10 +63,11 @@ function App() {
     getFilms()
       .then(data=>{
         const updatedData = updateFavorites(data, favorites)
-        setLoaded(true) 
+        setLoaded(true)
         setFilms(updatedData)
         setAllFilms(updatedData) 
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
   useEffect(()=>{
@@ -88,7 +88,7 @@ function App() {
   },[films, currentFilm])
   
   return (
-      <AnimatePresence>
+      <>
          {!loaded ? <Loading/> : 
           <div className={`app app--${theme}`}>
               <Header/>
@@ -116,7 +116,7 @@ function App() {
             </section>
           </div>
         }
-      </AnimatePresence>
+      </>
   );
 }
 

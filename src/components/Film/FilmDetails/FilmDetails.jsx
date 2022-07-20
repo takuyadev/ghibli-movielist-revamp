@@ -1,6 +1,8 @@
 import React, {useContext} from 'react'
 import { ThemeContext } from '../../../modules/context/ThemeContext'
+import { UilArrowDown, UilStar, UilCalendarAlt, UilClock } from '@iconscout/react-unicons';
 import './FilmDetails.css'
+
 import Button from '../../Button/Button'
 import { saveFavorite } from '../../../modules/utils/Favorite'
 import {motion, AnimatePresence} from 'framer-motion'
@@ -44,15 +46,15 @@ function FilmDetails({film, handleClick}){
                                             <div className="film-details__tags film-details__tags--stats">
                                                 <div className="film-details__tag">
                                                     <p>{rt_score}</p>
-                                                    <i className="uil uil-star"/>
+                                                    <UilStar size="16"/>
                                                 </div>
                                                 <div className="film-details__tag">
                                                     <p>{release_date}</p>
-                                                    <i className="uil uil-calendar-alt"/>
+                                                    <UilCalendarAlt size="16"/>
                                                 </div>
                                                 <div className="film-details__tag">
                                                     <p>{running_time}</p>
-                                                    <i className="uil uil-clock"/>
+                                                    <UilClock  size="16"/>
                                                 </div>
                                             </div>
                                             <p className="film-details__description">{description}</p>
@@ -63,7 +65,7 @@ function FilmDetails({film, handleClick}){
                                             /> 
                                         </> :  
                                         <div className="film-details__placeholder"> 
-                                            <i class="icons uil uil-arrow-down"></i> Select movie below to expand details.
+                                            <UilArrowDown/> Select movie below to expand details.
                                         </div> }
                                     </div>
                                 </div>

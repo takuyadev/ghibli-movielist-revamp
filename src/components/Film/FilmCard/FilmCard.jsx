@@ -1,5 +1,6 @@
 import React from 'react'
 import {motion, AnimatePresence} from 'framer-motion'
+import { UilHeart } from '@iconscout/react-unicons'
 import './FilmCard.css'
 
 function FilmCard({film, handleClick, disabled, setDisabled}) {
@@ -37,13 +38,12 @@ function FilmCard({film, handleClick, disabled, setDisabled}) {
             <AnimatePresence>
                 {film.favorite && 
                     <motion.div
-                        key={film.id}
                         variants={iconAnimation}
                         initial="initial"
                         animate="animate"
                         exit="exit"
                     >
-                        <i className="film__heart uil uil-heart"/>
+                        <UilHeart className="film__heart"/>
                     </motion.div>
                 }
             </AnimatePresence>

@@ -11,7 +11,7 @@
 .film__heart{
     position: absolute;
     right: 5px;
-    top: 0;
+    top: 5px;
     color: red;
 }
 

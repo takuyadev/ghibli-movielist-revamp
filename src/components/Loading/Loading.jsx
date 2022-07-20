@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '../../modules/context/ThemeContext'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import './Loading.css'
 
 function Loading(){
@@ -26,8 +26,8 @@ function Loading(){
                 variants={loadingAnimation}
                 animate="visible"
                 exit="hidden">
-                    <img src={`./img/logo_${theme}.png`}/>
-                    <div class="lds-ripple">
+                    <img src={`./img/logo_${theme}.png`} alt="Logo of Studio Ghibli"/>
+                    <div className="lds-ripple">
                         <div></div><div></div>
                     </div>
             </motion.div>
