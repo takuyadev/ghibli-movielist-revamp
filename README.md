@@ -1,5 +1,7 @@
 # Ghibli Movielist Project
 
+This project is deployed at the [link here.](https://ghiblli-movielist.netlify.app/)
+
 ### `Summary`
 
 This self-project is a website where you can browse to see all different types of Ghibli Movies created over the years. This is a revisit to an older project from a while back, using more technical knowledge to add favoriting, animation on transitions, and carousel.
