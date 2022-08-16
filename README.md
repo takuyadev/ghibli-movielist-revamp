@@ -1,6 +1,6 @@
 # Ghibli Movielist Project
 
-This project is deployed at the [link here.](https://ghiblli-movielist.netlify.app/)
+This project is deployed at the [link here.](https://ghibli-movielist.netlify.app/)
 
 ### `Summary`
 
